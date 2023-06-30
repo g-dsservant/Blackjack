@@ -1,5 +1,7 @@
-#game module
-#contains all necessary functions to run the game
+'''
+Game module
+Contains all necessary functions to run the game
+'''
 
 import os
 
