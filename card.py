@@ -149,9 +149,6 @@ class Chip:
                 self.bet = bet
                 break
 
-        
-
-
 
 if __name__ == '__main__':
     print("This is card.py module, please open blackjack.py")
