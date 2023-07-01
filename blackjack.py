@@ -10,7 +10,7 @@ def main():
     '''
     This function contains the game logic.
     '''
-    round_om = True
+    round_on = True
     round_num = 0
 
     print('Welcome to BlackJack!')
