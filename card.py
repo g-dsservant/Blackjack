@@ -14,7 +14,7 @@ VALUES = {"two":2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,
 
 
 class Card:
-    '''This Class represents cards.'''
+    '''This Class represents a card.'''
 
     def __init__(self,suit,rank):
         self.suit = suit
@@ -88,14 +88,19 @@ class Hand:
         
         return total
 
+    @classmethod
+    def ask_name(cls):
+        name = input('Please enter your name: ')
+        return cls(name)
+
 
 class Chip:
     '''
     This Class represents the chips held by an individual
     '''
     
-    def __init__(self):
-        self.balance = 0
+    def __init__(self,balance = 0):
+        self.balance = balance
         self.bet = 0
     
     def add_balance(self,amount):
@@ -109,6 +114,40 @@ class Chip:
     def clear_bet(self):
         '''Clears the existing bet for new round'''
         self.bet = 0
+
+    @classmethod
+    def ask_balance(cls):
+        while True:
+            try:
+                balance = int(input("Please enter your available balance: "))
+                if balance < 0:
+                    raise Exception("Balance cannot be negative!")
+
+            except ValueError:
+                print("Enter an integer!")
+            
+            except Exception as e:
+                print(e)
+            
+            else:
+                return cls(balance)
+
+    def ask_bet(self,round_num):
+        while True:
+            try:
+                bet = int(input(f"How much would you like to bet for Round {round_num}?: "))
+                if bet > self.balance or bet <= 0:
+                    raise Exception("Cannot bet outside your balance!")
+                
+            except ValueError:
+                print("Enter an integer!")
+        
+            except Exception as e:
+                print(e)
+        
+            else:
+                self.bet = bet
+                break
 
         
 
